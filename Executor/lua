@@ -1,25 +1,25 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com"))()
-local Window = Library.CreateLib("Rivals Premium Executor", "BloodTheme")
+-- In standard Lua, 'loadstring' is often 'load' in 5.2+
+local load_fn = loadstring or load 
 
--- COMBAT TAB
-local Combat = Window:NewTab("Combat")
-local CombatSection = Combat:NewSection("Aimbot")
+-- Standard Lua equivalent of your Combat Tab logic
+local function enableAimbot()
+    print("Aimbot logic initiated (Standard Lua)")
+    -- In real Lua, you'd use an external library like 'luasocket' to fetch code
+    -- local http = require("socket.http")
+    -- local code = http.request("https://raw.githubusercontent.com...")
+    -- if code then load_fn(code)() end
+end
 
-CombatSection:NewButton("Enable Silent Aim", "Locks onto players automatically", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Aimbot-V3/main/src/Aimbot.lua"))()()
-    print("Aimbot V3 Loaded")
-end)
+-- Standard Lua equivalent of your Unlocks Tab logic
+local function unlockSkins()
+    print("Skins Unlocked (Visual/Local-side)")
+end
 
--- UNLOCKS TAB
-local Unlocks = Window:NewTab("Unlocks")
-local UnlockSection = Unlocks:NewSection("Items")
+-- Example of a basic command-line menu since there is no 'Window:NewTab'
+print("--- Rivals Premium Executor (CLI Version) ---")
+print("1. Enable Silent Aim")
+print("2. Unlock All Skins")
+local choice = io.read()
 
-UnlockSection:NewButton("Unlock All Skins", "Local-side only skin access", function()
-    -- Logic for local skin spoofing
-    print("Skins Unlocked (Visual)")
-end)
-
-UnlockSection:NewButton("Unlock All Weapons", "Gives access to all weapons", function()
-    -- Logic for weapon unlocking
-    print("Weapons Unlocked")
-end)
+if choice == "1" then enableAimbot() end
+if choice == "2" then unlockSkins() end
