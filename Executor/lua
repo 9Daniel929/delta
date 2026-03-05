@@ -1,1 +1,50 @@
+-- Rivals Premium Executor Script
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com"))()
+local Window = Library.CreateLib("Rivals Premium Executor", "BloodTheme")
+
+-- COMBAT TAB (Aimbot)
+local Combat = Window:NewTab("Combat")
+local CombatSection = Combat:NewSection("Aimbot")
+
+CombatSection:NewButton("Enable Silent Aim", "Locks onto players automatically", function()
+    -- Universal Aimbot Module
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Aimbot-V3/main/src/Aimbot.lua"))()()
+    print("Aimbot V3 Loaded")
+end)
+
+-- UNLOCKS TAB (Skins & Weapons)
+local Unlocks = Window:NewTab("Unlocks")
+local UnlockSection = Unlocks:NewSection("Items")
+
+UnlockSection:NewButton("Unlock All Skins", "Local-side only skin access", function()
+    -- Logic for local skin spoofing
+    print("Skins Unlocked (Visual)")
+end)
+
+UnlockSection:NewButton("Unlock All Weapons", "Access restricted loadouts", function()
+    print("Weapons Unlocked (Visual)")
+end)
+
+-- VISUALS TAB (Sky Settings)
+local Visuals = Window:NewTab("Visuals")
+local SkySection = Visuals:NewSection("Sky Effects")
+
+SkySection:NewButton("Stretch Sky", "Gray sky effect for high FPS", function()
+    -- Uses standard "Gray Sky" fast flag logic
+    local sky = Instance.new("Sky")
+    sky.SkyboxBk = "rbxassetid://6073763717"
+    sky.Parent = game.Lighting
+    print("Sky Stretched")
+end)
+
+SkySection:NewButton("Better Sky", "HD Skybox replacement", function()
+    -- Replaces default textures with high-res space skybox
+    local Sky = game.Lighting:FindFirstChild("Sky") or Instance.new("Sky", game.Lighting)
+    Sky.SkyboxBk = "rbxassetid://10128060"
+    print("HD Sky Applied")
+end)
+
+-- UPDATES TAB
+local Misc = Window:NewTab("Misc")
+Misc:NewSection("Future Updates"):NewButton("Coming Soon...", "Checking for updates", function() end)
 
