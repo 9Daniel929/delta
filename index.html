@@ -3,37 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Button GUI</title>
+    <title>Mod Menu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Main Launcher -->
-    <button id="launchBtn" onclick="toggleGUI(true)">Open Menu</button>
+    <button id="launchBtn" onclick="toggleGUI(true)">Open Mod Menu</button>
 
-    <!-- The GUI -->
-    <div id="gui" class="hidden">
+    <div id="gui">
         <span class="close-x" onclick="toggleGUI(false)">&times;</span>
-        <h3>Control Panel</h3>
+        <h3 class="gui-title">Premium Executor</h3>
         
         <div class="button-grid">
-            <button class="action-btn">Action 1</button>
-            <button class="action-btn">Action 2</button>
-            <button class="action-btn">Action 3</button>
-            <button class="action-btn">Action 4</button>
-            <button class="action-btn">Action 5</button>
-            <button class="action-btn">Action 6</button>
+            <!-- Added 'this' so the function knows which button was clicked -->
+            <button class="action-btn" onclick="toggleHack(this)">Aimbot</button>
+            <button class="action-btn" onclick="toggleHack(this)">Unlock All Skins</button>
+            <button class="action-btn" onclick="toggleHack(this)">Unlock All Weapons</button>
+            <button class="action-btn" onclick="toggleHack(this)">Stretch Sky</button>
+            <button class="action-btn disabled">Coming Soon</button>
+            <button class="action-btn disabled">Coming Soon</button>
         </div>
     </div>
 
     <script>
         function toggleGUI(show) {
-            const gui = document.getElementById('gui');
-            if (show) {
-                gui.style.display = 'block';
-            } else {
-                gui.style.display = 'none';
-            }
+            document.getElementById('gui').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleHack(element) {
+            // This toggles the 'active' class on and off
+            element.classList.toggle('active');
+            
+            // Log status to console
+            const status = element.classList.contains('active') ? "Enabled" : "Disabled";
+            console.log(element.innerText + " is now " + status);
         }
     </script>
 </body>
